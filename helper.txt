@@ -1,0 +1,45 @@
+-----------------------------------------------------------------------------------------------------
+Questions to ask
+
+Which store has the highest pastry waste?"
+
+What are the issues that are being flagged so far?
+
+------------------------------------------------------------------------------------------------------
+Instructions for genie agent:
+This is simulated data for a platform demo. Never give operational or financial advice.
+Data covers April 2019 for a fictional coffee chain with 3 NYC stores: Astoria, Lower Manhattan, and Hell's Kitchen.
+Store Health Score is a business rule defined in the view (0-5 scale). Explain it if asked.
+Prefer percentages and averages; round to 1 decimal place.
+When asked about 'best-selling', use total line_item_amount (revenue), not quantity.
+Product groups are: Beverages, Food, Whole Bean/Teas, Merchandise, Coffee beans.
+The store_scorecard view provides aggregated KPIs per store.
+---------------------------------------------------------------------------------------------------------
+Sample Questions for genie agent:
+What is the best-selling product this month?
+Which store has the highest pastry waste rate?
+Show average daily revenue by store
+What percentage of sales are beverages vs food by store?
+Which generation spends the most per visit?
+How does Hell's Kitchen compare to Astoria on target attainment?
+What are the top 5 products by revenue in Lower Manhattan?
+
+----------------------------------------------------------------------------------------------------------
+Example questions for genie agent:
+
+Average daily revenue per store
+
+SELECT store_name, ROUND(AVG(daily_rev), 2) AS avg_daily_revenue 
+FROM (SELECT store_name, transaction_date, SUM(line_item_amount) AS daily_rev 
+      FROM dev_overwatch.coffee_gold.v_coffee_performance GROUP BY store_name, transaction_date) 
+GROUP BY store_name ORDER BY avg_daily_revenue DESC
+
+
+
+Beverage percentage by store:
+SELECT store_name, 
+  ROUND(SUM(CASE WHEN product_group = 'Beverages' THEN line_item_amount ELSE 0 END) / SUM(line_item_amount) * 100, 1) AS beverage_pct 
+FROM dev_overwatch.coffee_gold.v_coffee_performance GROUP BY store_name ORDER BY beverage_pct DESC
+
+
+--------------------------------------------------------------------------------------------------------------------
