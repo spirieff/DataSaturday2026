@@ -1,7 +1,7 @@
 # Databricks notebook source
 # DBTITLE 1,PROMPT 1: Data + Governance
 # MAGIC %md
-# MAGIC >
+# MAGIC > Dataset can be downloaded from here: https://www.kaggle.com/datasets/ylchang/coffee-shop-sample-data-1113
 # MAGIC > **PROMPT 1 — paste into Assistant:**
 # MAGIC >
 # MAGIC > I have 9 CSV files uploaded to /Volumes/dev_overwatch/coffee_raw/raw/ for a fictional coffee chain with 3 NYC stores. The files are:
