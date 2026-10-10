@@ -121,7 +121,7 @@
 # MAGIC > - The app runtime injects DATABRICKS_CLIENT_ID and DATABRICKS_CLIENT_SECRET env vars for its service principal. You MUST temporarily remove these from os.environ before creating WorkspaceClient(host=..., token=user_token), then restore them. Otherwise the SDK raises "more than one authorization method" error.
 # MAGIC >
 # MAGIC > In app.yaml:
-# MAGIC > - Set env vars for GENIE_SPACE_ID, DATABRICKS_HOST (https://adb-7405618848952972.12.azuredatabricks.net), and DATABRICKS_WAREHOUSE_ID (269d67fc6a628421)
+# MAGIC > - Set env vars for GENIE_SPACE_ID, DATABRICKS_HOST (https://adb-xxxxxxx.azuredatabricks.net), and DATABRICKS_WAREHOUSE_ID (2xxxxxxxx421)
 # MAGIC > - Add resources: the genie space with CAN_RUN and the sql warehouse with CAN_USE
 # MAGIC >
 # MAGIC > requirements.txt: databricks-sdk>=0.30.0, streamlit>=1.35.0, pandas
